@@ -1,0 +1,54 @@
+if infocmp xterm-256color >/dev/null 2>&1; then
+	export TERM='xterm-256color'
+fi
+
+# determine which bash subsystem we are working with
+if uname -a | grep 'Microsoft' > /dev/null 2>&1; then
+	export SUBSYSTEM='windows'
+
+  export VAGRANT_WSL_ENABLE_WINDOWS_ACCESS="1"
+  export VAGRANT_HOME="/mnt/c/Projects/.vagrant.d"
+  export VAGRANT_WSL_WINDOWS_ACCESS_USER_HOME_PATH="/mnt/c/Projects"
+  export DOCKER_HOST="tcp://localhost:2375"
+elif uname -a | grep 'Darwin' > /dev/null 2>&1; then
+	export SUBSYSTEM='osx'
+else
+	export SUBSYSTEM='linux'
+fi
+
+export EDITOR='vim'
+
+# increase bash history size to 32768 entries (default is 500)
+export HISTSIZE='32768';
+export HISTFILESIZE="${HISTSIZE}";
+
+# omit duplicates and commands that begin with a space from history
+export HISTCONTROL='ignoreboth';
+
+# don’t clear the screen after quitting a man page
+export MANPAGER="less -X";
+
+# color dem man pages
+export LESS_TERMCAP_mb=$'\E[01;31m'
+export LESS_TERMCAP_md=$'\E[01;31m'
+export LESS_TERMCAP_me=$'\E[0m'
+export LESS_TERMCAP_se=$'\E[0m'
+export LESS_TERMCAP_so=$'\E[01;44;33m'
+export LESS_TERMCAP_ue=$'\E[0m'
+
+export PATH=/usr/local/sbin:$PATH
+export PATH=/usr/local/bin:$PATH
+export PATH=/usr/local/heroku/bin:$PATH
+export PATH=$HOME/.rbenv/bin:$PATH
+export PATH=$HOME/go/bin:$PATH
+export PATH=$PATH:/usr/local/share/npm/bin
+export PATH=$PATH:$HOME/bin
+export PATH=$PATH:$HOME/.rvm/bin
+export PATH=$PATH:$HOME/.composer/vendor/bin
+export PATH=/home/linuxbrew/.linuxbrew/bin:$PATH
+export PATH=$PATH:$HOME/.local/bin
+
+export CLICOLOR=1
+export LSCOLORS=ExFxCxDxBxegedabagacad
+
+export RBENV_ROOT=/usr/local/var/rbenv
