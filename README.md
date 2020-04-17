@@ -1,5 +1,7 @@
 # `.dotfiles`
 
+> These are my dotfiles. There are many like it, but these ones are mine. Without me, my dotfiles are useless. Without my dotfiles, I am useless.
+
 ## Getting Started
 
 Clone this repository using `yadm`.
