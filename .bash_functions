@@ -19,33 +19,3 @@ extract () {
             echo "'$1' is not a valid file"
         fi
 }
-
-composer(){
-    if which composer > /dev/null; then
-        composer "$@"
-    else
-        if [[ ! -d "${HOME}/.composer" ]]; then
-            mkdir -p "${HOME}/.composer"
-        fi
-
-        docker run --rm --interactive --tty \
-            --volume $PWD:/app \
-            --volume ${COMPOSER_HOME:-$HOME/.composer}:/tmp \
-            --user $(id -u):$(id -g) \
-            composer "$@"
-    fi
-}
-
-tldr() {
-    if which tldr > /dev/null; then
-        tldr "$@"
-    else
-        if [[ ! -d "${HOME}/.tldr" ]]; then
-            mkdir -p "${HOME}/.tldr"
-        fi
-
-        docker run --rm --interactive --tty \
-            --volume ${HOME}/.tldr:/root/.tldr \
-            nutellinoit/tldr "$@"
-    fi
-}
