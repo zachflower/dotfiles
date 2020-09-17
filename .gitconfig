@@ -47,6 +47,8 @@
   # Checkout a pull request
   pr = "!f() { git fetch origin pull/$1/head:pr/$1 && git checkout pr/$1; }; f"
 
+  # Delete branches that have been merged into current one
+  trim = !git branch --merged | grep -v '*' | xargs -n 1 git branch -d
 [core]
 	editor = vim
 	pager = less -r
