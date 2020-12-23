@@ -3,7 +3,7 @@ if infocmp xterm-256color >/dev/null 2>&1; then
 fi
 
 # determine which bash subsystem we are working with
-if uname -a | grep 'Microsoft' > /dev/null 2>&1; then
+if uname -a | grep 'microsoft' > /dev/null 2>&1; then
 	export SUBSYSTEM='windows'
 elif uname -a | grep 'Darwin' > /dev/null 2>&1; then
 	export SUBSYSTEM='osx'
