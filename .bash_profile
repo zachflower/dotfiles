@@ -14,6 +14,10 @@ if which phpenv > /dev/null; then eval "$(phpenv init -)"; fi
 if which thefuck > /dev/null; then eval "$(thefuck --alias)"; fi
 if which kubectl > /dev/null; then source <(kubectl completion bash); fi
 
+if which brew &> /dev/null && [ -f "$(brew --prefix nvm)/nvm.sh" ]; then
+  source $(brew --prefix nvm)/nvm.sh
+fi
+
 # Add tab completion for many Bash commands
 if which brew &> /dev/null && [ -f "$(brew --prefix)/share/bash-completion/bash_completion" ]; then
 	source "$(brew --prefix)/share/bash-completion/bash_completion"
