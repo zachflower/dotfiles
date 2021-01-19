@@ -25,9 +25,9 @@ elif [ -f /etc/bash_completion ]; then
 	source /etc/bash_completion
 fi
 
-if [ $SUBSYSTEM == 'windows' ]; then
+if which keychain &> /dev/null; then
   # load the ssh key
-  /usr/bin/keychain --nogui $HOME/.ssh/id_rsa
+  keychain --nogui $HOME/.ssh/id_rsa
   source $HOME/.keychain/$(hostname)-sh
 fi
 
