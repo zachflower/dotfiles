@@ -1,8 +1,14 @@
 [user]
 	useConfigOnly = true
 
+[init]
+  templatedir = ~/.git_template
+
 [alias]
 	st = status
+
+  # Trigger a CI build
+  nudge = commit --allow-empty -m 'trigger build'
 
 	# Print the git tree
 	tree = log --graph --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(white)- %an, %ar%Creset'

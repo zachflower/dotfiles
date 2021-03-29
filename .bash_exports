@@ -5,6 +5,7 @@ fi
 # determine which bash subsystem we are working with
 if uname -a | grep 'microsoft' > /dev/null 2>&1; then
 	export SUBSYSTEM='windows'
+  export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}'):0.0
 elif uname -a | grep 'Darwin' > /dev/null 2>&1; then
 	export SUBSYSTEM='osx'
 else
@@ -48,3 +49,5 @@ export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
 
 export RBENV_ROOT=/usr/local/var/rbenv
+
+export GPG_TTY=$(tty)
