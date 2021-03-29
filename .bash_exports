@@ -14,6 +14,9 @@ fi
 
 export EDITOR='vim'
 
+# disable bash deprecation warning in macos catalina
+export BASH_SILENCE_DEPRECATION_WARNING=1
+
 # increase bash history size to 32768 entries (default is 500)
 export HISTSIZE='32768';
 export HISTFILESIZE="${HISTSIZE}";
