@@ -1,11 +1,18 @@
+# shellcheck shell=bash
+# vi: ft=bash
+
+GPG_TTY=$(tty)
+
 if infocmp xterm-256color >/dev/null 2>&1; then
 	export TERM='xterm-256color'
 fi
 
 # determine which bash subsystem we are working with
 if uname -a | grep 'microsoft' > /dev/null 2>&1; then
+  DISPLAY=$(grep nameserver /etc/resolv.conf | awk '{print $2; exit;}'):0.0
+
 	export SUBSYSTEM='windows'
-  export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}'):0.0
+  export DISPLAY
 elif uname -a | grep 'Darwin' > /dev/null 2>&1; then
 	export SUBSYSTEM='osx'
 else
@@ -53,4 +60,4 @@ export LSCOLORS=ExFxCxDxBxegedabagacad
 
 export RBENV_ROOT=/usr/local/var/rbenv
 
-export GPG_TTY=$(tty)
+export GPG_TTY
