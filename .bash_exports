@@ -55,6 +55,10 @@ export PATH=$PATH:$HOME/.config/composer/vendor/bin
 export PATH=/home/linuxbrew/.linuxbrew/bin:$PATH
 export PATH=$PATH:$HOME/.local/bin
 
+if command -v yarn > /dev/null; then
+  export PATH="$(yarn global bin):$PATH"
+fi
+
 export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
 
