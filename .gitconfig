@@ -1,47 +1,54 @@
 [user]
-	useConfigOnly = true
+  email = zach@flower.codes
+  name = Zachary Flower
+
+[init]
+  templatedir = ~/.git_template
 
 [alias]
-	st = status
+  st = status
 
-	# Print the git tree
-	tree = log --graph --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(white)- %an, %ar%Creset'
+  # Trigger a CI build
+  nudge = commit --allow-empty -m 'trigger build'
 
-	# Git history
-	history = log --stat --abbrev-commit
+  # Print the git tree
+  tree = log --graph --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(white)- %an, %ar%Creset'
 
-	# Amend the currently staged files to the latest commit
-	amend = !git log -n 1 --pretty=tformat:%s%n%n%b | git commit -F - --amend
+  # Git history
+  history = log --stat --abbrev-commit
 
-	# List all branches
+  # Amend the currently staged files to the latest commit
+  amend = !git log -n 1 --pretty=tformat:%s%n%n%b | git commit -F - --amend
+
+  # List all branches
   branches = branch -a
 
-	# List all remotes
+  # List all remotes
   remotes = remote -v
 
-	# List all tags
+  # List all tags
   tags = tag -l
 
-	# List contributors with number of commits
-	contributors = shortlog --summary --numbered
+  # List contributors with number of commits
+  contributors = shortlog --summary --numbered
 
-	# Undo the last commit
-	undo = reset --soft HEAD~1
+  # Undo the last commit
+  undo = reset --soft HEAD~1
 
-	# Automatically sign off commit
-	commit = commit -s
+  # Automatically sign off commit
+  commit = commit -s
 
-	# Check out master
+  # Check out master
   com = checkout master
 
-	# Check out develop
+  # Check out develop
   cos = checkout staging 
 
-	# Check out develop
+  # Check out develop
   cod = checkout develop
 
-	# Set the upstream branch
-	set = !git branch --set-upstream-to=origin/`git symbolic-ref --short HEAD`
+  # Set the upstream branch
+  set = !git branch --set-upstream-to=origin/`git symbolic-ref --short HEAD`
 
   # Checkout a pull request
   pr = "!f() { git fetch origin pull/$1/head:pr/$1 && git checkout pr/$1; }; f"
@@ -49,69 +56,69 @@
   # Delete branches that have been merged into current one
   trim = !git branch --merged | grep -v '*' | xargs -n 1 git branch -d
 [core]
-	editor = vim
-	pager = less -r
+  editor = vim
+  pager = less -r
 
-	# Use custom `.gitignore`
-	excludesfile = ~/.gitignore_global
+  # Use custom `.gitignore`
+  excludesfile = ~/.gitignore_global
 
-	# Treat spaces before tabs and all kinds of trailing whitespace as an error
-	# [default] trailing-space: looks for spaces at the end of a line
-	# [default] space-before-tab: looks for spaces before tabs at the beginning of a line
-	whitespace = space-before-tab,-indent-with-non-tab,trailing-space
+  # Treat spaces before tabs and all kinds of trailing whitespace as an error
+  # [default] trailing-space: looks for spaces at the end of a line
+  # [default] space-before-tab: looks for spaces before tabs at the beginning of a line
+  whitespace = space-before-tab,-indent-with-non-tab,trailing-space
 
 [apply]
-	# Detect whitespace errors when applying a patch
-	whitespace = fix
+  # Detect whitespace errors when applying a patch
+  whitespace = fix
 
 [color]
-	# Use colors in Git commands that are capable of colored output when
-	# outputting to the terminal. (This is the default setting in Git ≥ 1.8.4.)
+  # Use colors in Git commands that are capable of colored output when
+  # outputting to the terminal. (This is the default setting in Git ≥ 1.8.4.)
   ui = auto
-	interactive = auto
+  interactive = auto
 
 [color "branch"]
-	current = yellow reverse
-	local = yellow
-	remote = green
+  current = yellow reverse
+  local = yellow
+  remote = green
 
 [color "diff"]
-	meta = yellow bold
-	frag = magenta bold
-	old = red
-	new = green
+  meta = yellow bold
+  frag = magenta bold
+  old = red
+  new = green
 
 [color "status"]
-	added = yellow
-	changed = green
-	untracked = blue
+  added = yellow
+  changed = green
+  untracked = blue
 
 [diff]
-	# Detect copies as well as renames
-	renames = copies
+  # Detect copies as well as renames
+  renames = copies
 
-	# Use the patience diff algorithm
-	algorithm = patience
+  # Use the patience diff algorithm
+  algorithm = patience
 
 [diff "bin"]
-	# Use `hexdump` to diff binary files
-	textconv = hexdump -v -C
+  # Use `hexdump` to diff binary files
+  textconv = hexdump -v -C
 
 [push]
-	# Use the Git 1.x.x default to avoid errors on machines with old Git
-	# installations. To use `simple` instead, add this to your `~/.extra` file:
-	# `git config --global push.default simple`. See http://git.io/mMah-w.
-	default = current
+  # Use the Git 1.x.x default to avoid errors on machines with old Git
+  # installations. To use `simple` instead, add this to your `~/.extra` file:
+  # `git config --global push.default simple`. See http://git.io/mMah-w.
+  default = current
 
-	# Make `git push` push relevant annotated tags when pushing branches out.
-	followTags = true
+  # Make `git push` push relevant annotated tags when pushing branches out.
+  followTags = true
 
 [branch]
-	autosetuprebase = always
+  autosetuprebase = always
 
 [help]
-	# Automatically correct and execute mistyped commands
-	autocorrect = 1
+  # Automatically correct and execute mistyped commands
+  autocorrect = 1
 
 [credential]
-	helper = cache
+  helper = cache

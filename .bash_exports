@@ -1,10 +1,18 @@
+# shellcheck shell=bash
+# vi: ft=bash
+
+GPG_TTY=$(tty)
+
 if infocmp xterm-256color >/dev/null 2>&1; then
 	export TERM='xterm-256color'
 fi
 
 # determine which bash subsystem we are working with
 if uname -a | grep 'microsoft' > /dev/null 2>&1; then
+  DISPLAY=$(grep nameserver /etc/resolv.conf | awk '{print $2; exit;}'):0.0
+
 	export SUBSYSTEM='windows'
+  export DISPLAY
 elif uname -a | grep 'Darwin' > /dev/null 2>&1; then
 	export SUBSYSTEM='osx'
 else
@@ -48,6 +56,10 @@ export PATH=/home/linuxbrew/.linuxbrew/bin:$PATH
 export PATH=$PATH:$HOME/.local/bin
 export PATH="$HOME/.jenv/bin:$PATH"
 
+if command -v yarn > /dev/null; then
+  export PATH="$(yarn global bin):$PATH"
+fi
+
 export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
 
@@ -56,3 +68,5 @@ export RBENV_ROOT=/usr/local/var/rbenv
 if which jenv > /dev/null; then
   eval "$(jenv init -)"
 fi
+
+export GPG_TTY

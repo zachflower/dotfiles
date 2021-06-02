@@ -1,0 +1,9 @@
+kind: pipeline
+type: docker
+name: default
+
+steps:
+  - name: shellcheck
+    image: koalaman/shellcheck-alpine:stable
+    commands:
+      - "shellcheck .bash_aliases .bash_exports .bash_functions .bash_profile .git_template/hooks/*"
