@@ -32,6 +32,7 @@ Plug 'mhinz/vim-startify'
 Plug 'tpope/vim-endwise'
 Plug 'StanAngeloff/php.vim'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'ciaranm/securemodelines'
 
 call plug#end()
 
