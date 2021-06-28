@@ -54,7 +54,7 @@ export PATH=$PATH:$HOME/.composer/vendor/bin
 export PATH=$PATH:$HOME/.config/composer/vendor/bin
 export PATH=/home/linuxbrew/.linuxbrew/bin:$PATH
 export PATH=$PATH:$HOME/.local/bin
-export PATH="$HOME/.jenv/bin:$PATH"
+export PATH=$HOME/.jenv/bin:$PATH
 
 if command -v yarn > /dev/null; then
   export PATH="$(yarn global bin):$PATH"
@@ -70,3 +70,5 @@ if which jenv > /dev/null; then
 fi
 
 export GPG_TTY
+
+export NVM_DIR="$HOME/.nvm"
